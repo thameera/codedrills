@@ -1,6 +1,7 @@
 doctype 5
-html
+html(ng-app="drillApp")
   head
+    meta(charset="utf-8")
     title= title
     link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/style.css')
@@ -14,16 +15,33 @@ html
         .col-sm-4.col-sm-offset-4
           .row#langrow
             .col-sm-4.text-center.lang
-              | Javascript
+              a(ng-href="/javascript") Javascript
             .col-sm-4.text-center.lang
-              | Python
+              a(ng-href="/python") Python
             .col-sm-4.text-center.lang
-              | Scala
+              a(ng-href="/scala") Scala
       .space-10
       .row
         .col-sm-10.col-sm-offset-1
-          #bin
+          section#bin(ng-view)
+
+    script(type="text/ng-template",id="home.html")
+      p Home
+
+    script(type="text/ng-template",id="javascript.html")
+      p JS Home
+
+    script(type="text/ng-template",id="python.html")
+      p Py Home
+
+    script(type="text/ng-template",id="scala.html")
+      p Scala Home
+
+    script(type="text/ng-template",id="play.html")
+      p Play
 
     script(src='components/jquery/dist/jquery.min.js')
     script(src='components/angular/angular.min.js')
+    script(src='components/angular-route/angular-route.min.js')
+    script(src='js/app.js')
 
