@@ -6,7 +6,24 @@ html
     link(rel='stylesheet', href='/css/style.css')
     script(src='http://localhost:35729/livereload.js')
   body
-    block content
+    .container-fixed
+      .row
+        .col-sm-12.text-center.main-title
+          h1 Code Drills
+      .row
+        .col-sm-4.col-sm-offset-4
+          .row#langrow
+            .col-sm-4.text-center.lang
+              | Javascript
+            .col-sm-4.text-center.lang
+              | Python
+            .col-sm-4.text-center.lang
+              | Scala
+      .space-10
+      .row
+        .col-sm-10.col-sm-offset-1
+          #bin
+
     script(src='components/jquery/dist/jquery.min.js')
     script(src='components/angular/angular.min.js')
 
