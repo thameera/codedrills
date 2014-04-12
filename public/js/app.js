@@ -45,16 +45,20 @@ drillApp.service('UtilService', [function() {
 }]);
 
 drillApp.controller('HomeCtrl', ['$scope', function($scope) {
-  //
+  $scope.languages = [
+    {link: 'javascript', title: 'Javascript'},
+    {link: 'python', title: 'Python'},
+    {link: 'scala', title: 'Scala'}
+  ];
 }]);
 
 drillApp.controller('JSHomeCtrl', ['$scope', function($scope) {
   $scope.categories = [
     {cat: 'basics', title: 'Basics'},
-    {cat: 'controlstructures', title: 'Control Structures'},
+    {cat: 'control', title: 'Control Structures'},
+    {cat: 'functions', title: 'Functions'},
     {cat: 'strings', title: 'Strings'},
     {cat: 'arrays', title: 'Arrays'},
-    {cat: 'functions', title: 'Functions'},
     {cat: 'json', title: 'JSON'},
     {cat: 'es6', title: 'ES6'},
     {cat: 'jquery', title: 'jQuery'},
@@ -104,8 +108,13 @@ drillApp.controller('PlayCtrl', ['$scope', '$routeParams', 'CommService', 'UtilS
   };
 
   $scope.onKeyPress = function(e) {
+    // TODO: remove (for testing only)
+    if (e.which === 96) {  // Tilde
+      $scope.input = '';
+      proceed();
+    }
     if (e.which === 13) { // Enter pressed
-      if ($scope.input === $scope.curSnippet[$scope.curLine]) {
+      if ($scope.input === $scope.curSnippet[$scope.curLine].replace(/\t/g, '')) {
         console.log('yes');
         proceed();
       } else {

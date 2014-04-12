@@ -1,6 +1,7 @@
 node_modules/
 public/components/
 public/css/
+snippets/
 
 *.vim
 

@@ -27,39 +27,43 @@ html(ng-app="drillApp")
           section#bin(ng-view)
 
     script(type="text/ng-template",id="home.html")
-      h2 Choose a language to start
-      ul
-        li
-          a(ng-href="/javascript") Javascript
-        li
-          a(ng-href="/python") Python
-        li
-          a(ng-href="/scala") Scala
+      .topic-list
+        h2 Choose a language to start
+        ul
+          li
+            a(ng-href="/javascript") Javascript
+          li
+            a(ng-href="/python") Python
+          li
+            a(ng-href="/scala") Scala
 
     script(type="text/ng-template",id="javascript.html")
-      h2 Choose a category
-      ul(ng-repeat="cat in categories")
-        li
-          a(ng-href="/javascript/p/{{cat.cat}}") {{cat.title}}
+      .topic-list
+        h2 Choose a category
+        ul
+          li(ng-repeat="cat in categories")
+            a(ng-href="/javascript/p/{{cat.cat}}") {{cat.title}}
 
     script(type="text/ng-template",id="python.html")
-      p Python is yet to come
+      p.soon Coming soon!
 
     script(type="text/ng-template",id="scala.html")
-      p Scala is yet to come
+      p.soon Coming soon!
 
     script(type="text/ng-template",id="play.html")
-      #playground
+      #playground(ng-show="curSnippet")
         .row
           .col-sm-8.col-sm-offset-2
             ul#codeviewer
               li(ng-repeat="line in curSnippet")
-                .codeline(hljs,source="line",language="javascript",ng-class="{'currentline': $index==curLine}")
+                .codeline(hljs,source="line",language="{{lang}}",ng-class="{'currentline': $index==curLine}")
                 
         .row
           .col-sm-8.col-sm-offset-2
             #codeinput
-              input(ng-model="input",ng-keypress="onKeyPress($event)")
+              input(ng-model="input",ng-keypress="onKeyPress($event)",autofocus)
+      p.soon(ng-show="!curSnippet")
+        | Coming soon!
 
     script(src='/components/jquery/dist/jquery.min.js')
     script(src='/components/lodash/dist/lodash.min.js')

@@ -1,6 +1,8 @@
 @import "../../public/components/lesshat/build/lesshat.less";
 
 body {
+  color: #999;
+  background-color: #454547;
 }
 
 .container-fixed {
@@ -12,16 +14,32 @@ body {
   font-family: sans;
 }
 
+a {
+  color: #B6C3CE;
+
+  &:hover {
+    color: #96B3BE;
+  }
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
 #bin {
   min-height: 400px;
   margin-top: 40px;
-  background-color: #629B4C;
+  background-color: #2E3036;
   .border-radius(10px);
-  .drop-shadow(1 1 2 black);
+  .drop-shadow(1 1 2 #2d3036);
   padding: 10px 10px;
 
   a {
-    color: #eee;
+    color: #FA46A3;
+
+    &:hover {
+      color: #DA2693;
+    }
   }
 }
 
@@ -33,7 +51,7 @@ body {
   height: 100%;
   width: 100%;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding: 5px;
   background-color: #23241f;
   
@@ -61,6 +79,26 @@ body {
 #codeinput {
   input {
     width: 100%;
+    color: black;
+  }
+}
+
+.soon {
+  font-size: 20px;
+  padding-top: 20%;
+  text-align: center;
+}
+
+.topic-list {
+  text-align: center;
+
+  ul {
+    margin-top: 20px;
+    list-style-type: none;
+    
+    li {
+      padding-bottom: 5px;
+    }
   }
 }
 
