@@ -26,16 +26,26 @@ html(ng-app="drillApp")
           section#bin(ng-view)
 
     script(type="text/ng-template",id="home.html")
-      p Home
+      h2 Choose a language to start
+      ul
+        li
+          a(ng-href="/javascript") Javascript
+        li
+          a(ng-href="/python") Python
+        li
+          a(ng-href="/scala") Scala
 
     script(type="text/ng-template",id="javascript.html")
-      p JS Home
+      h2 Choose a category
+      ul(ng-repeat="cat in categories")
+        li
+          a(ng-href="/javascript/p/{{cat.cat}}") {{cat.title}}
 
     script(type="text/ng-template",id="python.html")
-      p Py Home
+      p Python is yet to come
 
     script(type="text/ng-template",id="scala.html")
-      p Scala Home
+      p Scala is yet to come
 
     script(type="text/ng-template",id="play.html")
       p Play
