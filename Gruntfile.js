@@ -36,7 +36,8 @@ module.exports = function (grunt) {
       server: {
         files: [
           'web.js',
-          'routes/*.js'
+          'routes/*.js',
+          'routes/snippets/*.js'
         ],
         tasks: ['jshint:server', 'develop', 'delayed-livereload']
       },

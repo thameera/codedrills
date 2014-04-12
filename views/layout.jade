@@ -2,8 +2,9 @@ doctype 5
 html(ng-app="drillApp")
   head
     meta(charset="utf-8")
-    title= title
+    title Code Drills
     link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/components/highlightjs/styles/monokai_sublime.css')
     link(rel='stylesheet', href='/css/style.css')
     script(src='http://localhost:35729/livereload.js')
   body
@@ -48,10 +49,23 @@ html(ng-app="drillApp")
       p Scala is yet to come
 
     script(type="text/ng-template",id="play.html")
-      p Play
+      #playground
+        .row
+          .col-sm-8.col-sm-offset-2
+            ul#codeviewer
+              li(ng-repeat="line in curSnippet")
+                .codeline(hljs,source="line",language="javascript",ng-class="{'currentline': $index==curLine}")
+                
+        .row
+          .col-sm-8.col-sm-offset-2
+            #codeinput
+              input(ng-model="input",ng-keypress="onKeyPress($event)")
 
-    script(src='components/jquery/dist/jquery.min.js')
-    script(src='components/angular/angular.min.js')
-    script(src='components/angular-route/angular-route.min.js')
-    script(src='js/app.js')
+    script(src='/components/jquery/dist/jquery.min.js')
+    script(src='/components/lodash/dist/lodash.min.js')
+    script(src='/components/highlightjs/highlight.pack.js')
+    script(src='/components/angular/angular.min.js')
+    script(src='/components/angular-route/angular-route.min.js')
+    script(src='/components/angular-highlightjs/angular-highlightjs.min.js')
+    script(src='/js/app.js')
 

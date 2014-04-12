@@ -1,8 +1,8 @@
 'use strict';
 
-var drillApp = angular.module('drillApp', ['ngRoute']);
+var drillApp = angular.module('drillApp', ['ngRoute', 'hljs']);
 
-drillApp.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+drillApp.config(['$locationProvider', '$routeProvider', 'hljsServiceProvider', function($locationProvider, $routeProvider, hljsServiceProvider) {
   $locationProvider.html5Mode(true);
 
   $routeProvider
@@ -29,19 +29,19 @@ drillApp.config(['$locationProvider', '$routeProvider', function($locationProvid
     .otherwise({
       redirectTo: '/'
     });
+
+    hljsServiceProvider.setOptions({
+      tabReplace: '    '
+    });
 }]);
 
 drillApp.service('CommService', ['$http', function($http) {
   this.fetchSnippets = function(lang, cat, cb) {
-    $http.get('snippets/' + lang + '/' + cat).success(cb);
+    $http.get('/snippets/' + lang + '/' + cat).success(cb);
   };
 }]);
 
 drillApp.service('UtilService', [function() {
-  this.getRandomSnippet = function(snippets) {
-    var r = Math.floor(Math.random() * snippets.length);
-    return snippets[r];
-  };
 }]);
 
 drillApp.controller('HomeCtrl', ['$scope', function($scope) {
@@ -71,14 +71,57 @@ drillApp.controller('ScalaHomeCtrl', ['$scope', function($scope) {
 }]);
 
 drillApp.controller('PlayCtrl', ['$scope', '$routeParams', 'CommService', 'UtilService', function($scope, $routeParams, Comm, Util) {
-  $scope.snippets = [];
+  var curSnipIndex, 
+      snippets = [];
+
   $scope.curSnippet = '';
   $scope.lang = $routeParams.lang;
   $scope.cat = $routeParams.cat;
 
+  /*
+   * Increment the current snippet index
+   */
+  var getNextSnipIndex = function() {
+    curSnipIndex += 1;
+    if (curSnipIndex === snippets.length) {
+      curSnipIndex = 0;
+    }
+    return curSnipIndex;
+  };
+
+  /*
+   * Proceed to next line or snippet
+   */
+  var proceed = function() {
+    if ($scope.curLine === $scope.curSnippet.length - 1) {
+      curSnipIndex = getNextSnipIndex();
+      $scope.curSnippet = snippets[curSnipIndex];
+      $scope.curLine = 0;
+    } else {
+      $scope.curLine += 1;
+    }
+    $scope.input = '';
+  };
+
+  $scope.onKeyPress = function(e) {
+    if (e.which === 13) { // Enter pressed
+      if ($scope.input === $scope.curSnippet[$scope.curLine]) {
+        console.log('yes');
+        proceed();
+      } else {
+        console.log('no');
+      }
+    }
+  };
+
   Comm.fetchSnippets($scope.lang, $scope.cat, function(data) {
-    $scope.snippets = data;
-    $scope.curSnippet = Util.getRandomSnippet($scope.snippets);
+    console.debug(data);
+
+    snippets = _.shuffle(data);
+    curSnipIndex = 0;
+    $scope.curSnippet = snippets[0];
+    console.debug($scope.curSnippet);
+    $scope.curLine = 0;
   });
 }]);
 

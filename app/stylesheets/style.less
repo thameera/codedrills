@@ -29,3 +29,38 @@ body {
   height: 10px;
 }
 
+#codeviewer {
+  height: 100%;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  background-color: #23241f;
+  
+  .codeline {
+    
+    pre {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      margin: 0;
+      line-height: 120%;
+
+      .hljs {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .currentline code {
+    opacity: 0.9;
+  }
+}
+
+#codeinput {
+  input {
+    width: 100%;
+  }
+}
+

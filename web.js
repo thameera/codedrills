@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Module dependencies.
@@ -33,7 +34,10 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/:var(|javascript|python|scala)?', routes.index);
+app.get('/snippets/:lang(|javascript|python|scala)?/:cat', routes.snippets);
+
+app.get('/:lang(|javascript|python|scala)?/p/*', routes.index);
+app.get('/:lang(|javascript|python|scala)?', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
