@@ -9,7 +9,9 @@ db.javascript = require('./snippets/js');
  */
 
 exports.index = function(req, res) {
-  res.render('layout');
+  res.render('layout', {
+    env: process.env.NODE_ENV
+  });
 };
 
 

@@ -10,6 +10,8 @@ var express = require('express'),
     path = require('path'),
     lessMiddleware = require('less-middleware');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var app = express();
 
 app.configure(function(){
@@ -29,6 +31,8 @@ app.configure(function(){
   }));
   app.use(express.static(path.join(__dirname, 'public')));
 });
+
+app.locals.pretty = true;
 
 app.configure('development', function(){
   app.use(express.errorHandler());
