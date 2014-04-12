@@ -11,7 +11,8 @@ html(ng-app="drillApp")
     .container-fixed
       .row
         .col-sm-12.text-center.main-title
-          h1 Code Drills
+          h1 
+            a(ng-href="/") Code Drills
       .row
         .col-sm-4.col-sm-offset-4
           .row#langrow
@@ -62,7 +63,9 @@ html(ng-app="drillApp")
           .col-sm-8.col-sm-offset-2
             #codeinput
               input(ng-model="input",ng-keypress="onKeyPress($event)",autofocus)
-      p.soon(ng-show="!curSnippet")
+      p.waiting(ng-show="!curSnippet && !comingsoon")
+        | Loading...
+      p.soon(ng-show="comingsoon")
         | Coming soon!
 
     script(src='/components/jquery/dist/jquery.min.js')

@@ -81,6 +81,7 @@ drillApp.controller('PlayCtrl', ['$scope', '$routeParams', 'CommService', 'UtilS
   $scope.curSnippet = '';
   $scope.lang = $routeParams.lang;
   $scope.cat = $routeParams.cat;
+  $scope.comingsoon = false;
 
   /*
    * Increment the current snippet index
@@ -126,6 +127,9 @@ drillApp.controller('PlayCtrl', ['$scope', '$routeParams', 'CommService', 'UtilS
   Comm.fetchSnippets($scope.lang, $scope.cat, function(data) {
     console.debug(data);
 
+    if (_.isEmpty(data)) {
+      $scope.comingsoon = true;
+    }
     snippets = _.shuffle(data);
     curSnipIndex = 0;
     $scope.curSnippet = snippets[0];

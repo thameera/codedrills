@@ -3,6 +3,7 @@
 body {
   color: #999;
   background-color: #454547;
+  font-size: 16px;
 }
 
 .container-fixed {
@@ -10,15 +11,23 @@ body {
   max-width: 970px;
 }
 
-.main-title {
-  font-family: sans;
-}
-
 a {
   color: #B6C3CE;
 
   &:hover {
     color: #96B3BE;
+  }
+}
+
+.main-title {
+  font-family: sans;
+
+  a {
+    color: #999;
+
+    &:hover {
+      color: #888;
+    }
   }
 }
 
@@ -83,7 +92,7 @@ a:hover, a:visited, a:link, a:active {
   }
 }
 
-.soon {
+.soon, .waiting {
   font-size: 20px;
   padding-top: 20%;
   text-align: center;
