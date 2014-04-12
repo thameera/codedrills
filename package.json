@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node web"
+    "start": "node web",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
+    "bower": "^1.3.2",
     "express": "~3.3.4",
     "jade": "~0.34.0",
     "less-middleware": "~0.1.15"
