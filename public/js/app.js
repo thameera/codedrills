@@ -1,3 +1,5 @@
+'use strict';
+
 var drillApp = angular.module('drillApp', ['ngRoute']);
 
 drillApp.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

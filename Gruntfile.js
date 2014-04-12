@@ -17,6 +17,17 @@ module.exports = function (grunt) {
         file: 'web.js'
       }
     },
+    jshint: {
+      options: {
+        jshintrc: true
+      },
+      server: {
+        src: ['*.js', 'routes/*.js']
+      },
+      js: {
+        src: ['public/js/*.js'],
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -27,10 +38,11 @@ module.exports = function (grunt) {
           'web.js',
           'routes/*.js'
         ],
-        tasks: ['develop', 'delayed-livereload']
+        tasks: ['jshint:server', 'develop', 'delayed-livereload']
       },
       js: {
         files: ['public/js/*.js'],
+        tasks: ['jshint:js'],
         options: {
           livereload: reloadPort
         }
@@ -69,5 +81,5 @@ module.exports = function (grunt) {
     }, 500);
   });
 
-  grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('default', ['jshint', 'develop', 'watch']);
 };

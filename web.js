@@ -3,11 +3,11 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , path = require('path')
-  , lessMiddleware = require('less-middleware');
+var express = require('express'),
+    routes = require('./routes'),
+    http = require('http'),
+    path = require('path'),
+    lessMiddleware = require('less-middleware');
 
 var app = express();
 
