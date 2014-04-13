@@ -10,7 +10,8 @@ module.exports = {
     ["console.log('Hello there');"],
     ["var isOne = (num === 1);"],
     ["var b = true;", "var c = false;"],
-    ["var x = 25;", "console.debug(typeof x);"]
+    ["var x = 25;", "console.debug(typeof x);"],
+    ["tail.next = {","\ttask: task,","\tdomain: isNodeJS && process.domain,","\tnext: null","};"],
   ],
 
   control: [
@@ -25,6 +26,7 @@ module.exports = {
     ["var num = 20;","while (num > 0) {","\tconsole.log(num);","\tnum -= 1;","}"],
     ["do {","\telement = element.nextSibling;","\tif (!element) break;","\telements.push(element);","} while (element !== endNode);"],
     ["while (available) {","\tconsole.log('Yes');","\tavailable = getNext();","}"],
+    ["while (++index < length) {","\targs[index] = arguments[index];","}"],
   ],
 
   functions: [
@@ -34,6 +36,52 @@ module.exports = {
     ["var noop = function() {};"],
     ["function isUndefined(value) {","\treturn typeof value === 'undefined';","}"],
     ["function isLeafNode (node) {","\tif (node) {","\t  return true;","\t}","\treturn false;","}"],
+    ["function transformElement(element, transform) {","\telement.style.WebkitTransform = transform;","\telement.style.transform = transform;","}"],
+    ["var isWindows = function() {","\treturn process.platform === 'win32';","};"],
+    ["moment.unix = function(input) {","\treturn moment(input * 1000);","};"],
+    ["function toJson(obj, pretty) {","\tif (typeof obj === 'undefined') return undefined;","\treturn JSON.stringify(obj, toJsonReplacer, pretty ? '  ' : null);","}"],
+    ["lang : function(key) {","\tif (key === undefined) {","\t  return this._lang;","\t} else {","\t  this._lang = getLangDefinition(key);","\t  return this;","\t}","}"],
+    ["channel.port1.onmessage = function() {","\trequestTick = requestPortTick;","\tchannel.port1.onmessage = flush;","\tflush();","};"],
+    ["deferred.fulfill = function(value) {","\tif (resolvedPromise) {","\t  return;","\t}","\tbecome(fulfill(value));","};"],
+    ["function isNative(value) {","\treturn typeof value == 'function' && reNative.test(fnToString.call(value));","}"],
+    ["async.noConflict = function() {","\troot.async = previous_async;","\treturn async;","};"],
+  ],
+
+  strings: [
+    ["var str = 'Hello world';"],
+    ["var fullname = first + ' ' + last;"],
+    ["var lowercase = function(string) {","\treturn isString(string) ? string.toLowerCase() : string;","};"],
+    ["uid = String.fromCharCode(digit + 1);"],
+    ["function isString(value) {","\treturn typeof value === 'string';","}"],
+    ["value = value.replace(/x/, '');"],
+    ["var len = str.length;"],
+    ["var concatStr = function(a, b) {","\treturn a.concat(b);","};"],
+    ["while (pos != -1) {","\tcount++;","\tpos = str.indexOf(\"x\", pos + 1);","}"],
+    ["var last = \"canal\".lastIndexOf(\"a\");"],
+    ["var matches = 'Mississippi'.match(/s/gi);"],
+    ["var str = \"Apples are round\";","var newstr = str.replace(\"apples\", \"oranges\", \"gi\");"],
+    ["var str2 = str1.slice(4, -2);"],
+    ["var arr = csvStr.split(',', 3);"],
+    ["var wordCount = str.split(' ').length;"],
+    ["console.assert(name === inStr.trim());"],
+    ["var val = Number(str);"],
+  ],
+
+  arrays: [
+    ["var years = [1950, 1960, 1970];","console.log(years[0]);"],
+    ["var empty = [];"],
+    ["var arr.length = 3;"],
+    ["var fruits = [];","fruits.push(\"banana\", \"apple\", \"peach\");","console.log(fruits.length);"],
+    ["var revStr = function(str) {","\treturn str.split('').reverse().join('');","};"],
+    ["if (!Array.isArray(arg)) {","\tconsole.error('Array required');","}"],
+    ["var popped = arr.pop();"],
+    ["for (key in obj) {","\tprops.push(key);","}"],
+    ["while (length--) {","\tcache.push(array[length]);","}"],
+    ["if (flags.length > 1) ","\tthis.short = flags.shift();"],
+    ["var scores = [1, 2, 10, 21]; ","scores.sort();"],
+    ["if (index > 0) {","\tarray.splice(index, 1);","}"],
+    ["if (listeners[i] === fn) {","\tlisteners.splice(i, 1);","}"],
+    ["args = args.slice(1);","args.unshift(local);"],
   ]
 };
 
