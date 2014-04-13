@@ -13,7 +13,7 @@ fs.readFile(inFile, {encoding: 'utf-8'}, function(err, data) {
     var lines0 = snippet.split('\n');
     var lines = [];
     lines0.forEach(function(line) {
-      lines.push(line.replace('  ', '\t'));
+      lines.push(line.replace('  ', '\t').trim());
     });
     console.log(JSON.stringify(lines) + ',');
   });

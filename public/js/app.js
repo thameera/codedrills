@@ -59,7 +59,9 @@ drillApp.controller('JSHomeCtrl', ['$scope', function($scope) {
     {cat: 'functions', title: 'Functions'},
     {cat: 'strings', title: 'Strings'},
     {cat: 'arrays', title: 'Arrays'},
-    {cat: 'json', title: 'JSON'},
+    {cat: 'classes', title: 'Classes'},
+    {cat: 'jsonmath', title: 'JSON, Math'},
+    {cat: 'dom', title: 'DOM'},
     {cat: 'es6', title: 'ES6'},
     {cat: 'jquery', title: 'jQuery'},
     {cat: 'lodash', title: 'Lo-dash'},
@@ -115,7 +117,7 @@ drillApp.controller('PlayCtrl', ['$scope', '$routeParams', 'CommService', 'UtilS
       proceed();
     }
     if (e.which === 13) { // Enter pressed
-      if ($scope.input === $scope.curSnippet[$scope.curLine].replace(/\t/g, '')) {
+      if ($scope.input === $scope.curSnippet[$scope.curLine].replace(/\t/g, '').trim()) {
         console.log('yes');
         proceed();
       } else {
