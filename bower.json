@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "codedrills",
   "version": "0.0.1",
   "ignore": [
     "**/.*",
@@ -7,7 +7,6 @@
     "components"
   ],
   "dependencies": {
-    "jquery": "~2.1.0",
     "angular": "~1.2.15",
     "bootstrap": "~3.1.1",
     "lesshat": "~2.0.15",
