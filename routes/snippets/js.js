@@ -82,6 +82,13 @@ module.exports = {
     ["if (index > 0) {","\tarray.splice(index, 1);","}"],
     ["if (listeners[i] === fn) {","\tlisteners.splice(i, 1);","}"],
     ["args = args.slice(1);","args.unshift(local);"],
+    ["names.forEach(function(name) {","\tconsole.log(name);","});"],
+    ["arg.slice(1).split('').forEach(function(c) {","\tret.push('-' + c);","});"],
+    ["var valid = arr.every(function(e) {","\treturn arr.value > threshold;","});"],
+    ["var even = arr.filter(function(i) {","\treturn i % 2 === 0;","});"],
+    ["var roots = numbers.map(Math.sqrt);"],
+    ["arr = arr.map(function(x, i) {","\treturn {index: i, value: x};","});"],
+    ["var sum = arr.reduce(function(s, a) {","\treturn s + a;","});"],
   ]
 };
 

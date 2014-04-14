@@ -113,29 +113,27 @@ drillApp.controller('PlayCtrl', ['$scope', '$routeParams', 'CommService', 'UtilS
   $scope.onKeyPress = function(e) {
     // TODO: remove (for testing only)
     if (e.which === 96) {  // Tilde
+      e.preventDefault();
       $scope.input = '';
       proceed();
     }
     if (e.which === 13) { // Enter pressed
       if ($scope.input === $scope.curSnippet[$scope.curLine].replace(/\t/g, '').trim()) {
-        console.log('yes');
+        //console.log('yes');
         proceed();
       } else {
-        console.log('no');
+        //console.log('no');
       }
     }
   };
 
   Comm.fetchSnippets($scope.lang, $scope.cat, function(data) {
-    console.debug(data);
-
     if (_.isEmpty(data)) {
       $scope.comingsoon = true;
     }
     snippets = _.shuffle(data);
     curSnipIndex = 0;
     $scope.curSnippet = snippets[0];
-    console.debug($scope.curSnippet);
     $scope.curLine = 0;
   });
 }]);
